@@ -1,0 +1,129 @@
+<UserControl x:Class="ZANE.Views.ChartDisplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ZANE.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:ChartDisplayViewModel}"
+             Background="{DynamicResource ContentBackgroundBrush}">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 标题 -->
+        <TextBlock Grid.Row="0" Text="📊 图表显示" 
+                   FontSize="28" FontWeight="Bold"
+                   Foreground="{DynamicResource TextPrimaryBrush}"
+                   Margin="0,0,0,20" />
+
+        <!-- 工具栏 -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,16">
+            <Border Background="{DynamicResource ButtonBackgroundBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="6"
+                    Padding="12,6" Margin="0,0,12,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="类型:" Foreground="{DynamicResource TextSecondaryBrush}" />
+                    <TextBlock Text="{Binding ChartType}" FontWeight="SemiBold" Margin="8,0,0,0"
+                               Foreground="{DynamicResource PrimaryBrush}" />
+                </StackPanel>
+            </Border>
+
+            <Button Command="{Binding ToggleChartTypeCommand}"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource TextPrimaryBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" Padding="12,6" Cursor="Hand" Margin="0,0,12,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🔄" Margin="0,0,6,0" />
+                    <TextBlock Text="切换图表" />
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding RefreshChartCommand}"
+                    Background="{DynamicResource PrimaryBrush}"
+                    Foreground="{DynamicResource TextOnPrimaryBrush}"
+                    BorderThickness="0" Padding="16,6" Cursor="Hand" Margin="0,0,12,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🔄" Margin="0,0,6,0" />
+                    <TextBlock Text="刷新数据" />
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding ExportDataCommand}"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource TextPrimaryBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" Padding="12,6" Cursor="Hand" Margin="0,0,12,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="📤" Margin="0,0,6,0" />
+                    <TextBlock Text="导出数据" />
+                </StackPanel>
+            </Button>
+
+            <TextBlock Text="{Binding DisplayStatus}" 
+                       VerticalAlignment="Center" FontSize="13"
+                       Foreground="{DynamicResource TextSecondaryBrush}" />
+        </StackPanel>
+
+        <!-- 数据列表（模拟图表区域） -->
+        <Border Grid.Row="2"
+                Background="{DynamicResource ContentBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="8">
+            <Grid Margin="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="数据点列表" FontSize="16" FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimaryBrush}"
+                           Margin="0,0,0,12" />
+
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding DataPoints}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{DynamicResource ButtonBackgroundBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1" CornerRadius="6"
+                                    Padding="16,10" Margin="0,0,0,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding Label}"
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource TextPrimaryBrush}" />
+
+                                    <Border Grid.Column="1"
+                                            Height="24" CornerRadius="4"
+                                            Background="{DynamicResource PrimaryBrush}"
+                                            Opacity="0.3" Margin="8,0">
+                                        <Border Width="{Binding Value, StringFormat={}{0}%}"
+                                                Height="24"
+                                                Background="{DynamicResource PrimaryBrush}"
+                                                CornerRadius="4"
+                                                HorizontalAlignment="Left" />
+                                    </Border>
+
+                                    <TextBlock Grid.Column="2" Text="{Binding Value, StringFormat={}{0:F1}}"
+                                               FontSize="14" FontWeight="Bold"
+                                               Foreground="{DynamicResource PrimaryBrush}"
+                                               HorizontalAlignment="Right" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+[
+  {
+    "Account": "admin",
+    "Name": "管理员",
+    "Password": "admin",
+    "RoleName": "管理员",
+    "Tel": "",
+    "RegisterTime": "2026-06-18T17:12:17.4897383+08:00",
+    "LoginTime": "0001-01-01T00:00:00",
+    "UpdateTime": "0001-01-01T00:00:00"
+  },
+  {
+    "Account": "tech",
+    "Name": "工艺师",
+    "Password": "tech",
+    "RoleName": "工艺",
+    "Tel": "",
+    "RegisterTime": "2026-06-18T17:12:17.4897857+08:00",
+    "LoginTime": "0001-01-01T00:00:00",
+    "UpdateTime": "0001-01-01T00:00:00"
+  },
+  {
+    "Account": "device",
+    "Name": "设备员",
+    "Password": "device",
+    "RoleName": "设备",
+    "Tel": "",
+    "RegisterTime": "2026-06-18T17:12:17.4897859+08:00",
+    "LoginTime": "0001-01-01T00:00:00",
+    "UpdateTime": "0001-01-01T00:00:00"
+  }
+]

@@ -1,0 +1,350 @@
+<UserControl x:Class="ZANE.Views.MESTestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ZANE.ViewModels"
+             xmlns:mes="clr-namespace:ZANE.Models.Mes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:MESTestViewModel}"
+             d:DesignWidth="1400" d:DesignHeight="800"
+             Background="{DynamicResource ContentBackgroundBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- ======== Title Bar ======== -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource ButtonBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="8"
+                Padding="20,12" Margin="0,0,0,12">
+            <Grid>
+                <TextBlock Text="MES Config &amp; Test"
+                           FontSize="24" FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimaryBrush}"
+                           VerticalAlignment="Center" />
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding SaveConfigCommand}"
+                            Background="{DynamicResource PrimaryBrush}"
+                            Foreground="{DynamicResource TextOnPrimaryBrush}"
+                            BorderThickness="0" Padding="16,8" Cursor="Hand"
+                            hc:BorderElement.CornerRadius="6">
+                        <StackPanel Orientation="Horizontal">
+                            <!--<TextBlock Text="Save" Margin="0,0,8,0" />-->
+                            <TextBlock Text="保存" FontSize="14" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ======== Main Content: 3 columns ======== -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- ===== Left: MQTT + MES Interface ===== -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- MQTT Section -->
+                <Border Grid.Row="0"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" CornerRadius="8"
+                        Padding="20" Margin="0,0,10,8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="MQTT Config"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                        <Grid Grid.Row="1" Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <hc:TextBox Grid.Column="0" Height="32"
+                                        hc:TitleElement.Title="MQTT Broker"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="100"
+                                        Text="{Binding MesParameterCopy.MqttServiceInfo.BrokerAddress}" />
+                            <hc:TextBox Grid.Column="2" Height="32"
+                                        hc:TitleElement.Title="MQTT Topic"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="80"
+                                        Text="{Binding MesParameterCopy.MqttServiceInfo.Topic}" />
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="0,8,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <hc:TextBox Grid.Column="0" Height="32"
+                                        hc:TitleElement.Title="MQTT Port"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="100"
+                                        Text="{Binding MesParameterCopy.MqttServiceInfo.Port}" />
+                            <hc:TextBox Grid.Column="2" Height="32"
+                                        hc:TitleElement.Title="Interval(ms)"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="90"
+                                        Text="{Binding MesParameterCopy.MqttServiceInfo.Interval}" />
+                            <Button Grid.Column="4" Width="60" Height="32" Padding="0"
+                                    Command="{Binding MqttTestCommand}"
+                                    Background="{DynamicResource PrimaryBrush}"
+                                    Foreground="{DynamicResource TextOnPrimaryBrush}"
+                                    BorderThickness="0" Cursor="Hand"
+                                    hc:BorderElement.CornerRadius="6">
+                                <TextBlock Text="Test" FontSize="13" />
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- Divider -->
+                <GridSplitter Grid.Row="1" Height="4"
+                              HorizontalAlignment="Stretch"
+                              Background="{DynamicResource BorderBrush}"
+                              ResizeDirection="Rows" Margin="0,0,10,8" />
+
+                <!-- MES Interface Section -->
+                <Border Grid.Row="2"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" CornerRadius="8"
+                        Padding="20" Margin="0,0,10,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="MES Interface Config"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                        <Grid Grid.Row="1" Margin="0,10,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <hc:TextBox Grid.Column="0" Height="32"
+                                        hc:TitleElement.Title="Server URL 1"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="90"
+                                        Text="{Binding MesParameterCopy.MesInterfaceInfo.BaseAddress}" />
+                            <hc:TextBox Grid.Column="2" Height="32"
+                                        hc:TitleElement.Title="Server URL 2"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="90"
+                                        Text="{Binding MesParameterCopy.MesInterfaceInfo.BaseAddress2}" />
+                            <hc:TextBox Grid.Column="4" Height="32"
+                                        hc:TitleElement.Title="Timeout(ms)"
+                                        hc:TitleElement.TitlePlacement="Left"
+                                        hc:TitleElement.TitleWidth="90"
+                                        Text="{Binding MesParameterCopy.MesInterfaceInfo.Timeout}" />
+                        </Grid>
+
+                        <!-- DataGrid -->
+                        <DataGrid Grid.Row="2"
+                                  AutoGenerateColumns="False" Background="Transparent"
+                                  BorderThickness="0"
+                                  ItemsSource="{Binding MesParameterCopy.MesInterfaceInfo.MesParameterItems}"
+                                  RowHeight="32" RowBackground="Transparent"
+                                  AlternatingRowBackground="{DynamicResource HoverBackgroundBrush}"
+                                  SelectionUnit="Cell" HeadersVisibility="Column"
+                                  GridLinesVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    <Setter Property="Height" Value="32" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                    <Setter Property="Padding" Value="8,0" />
+                                </Style>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="8,0" />
+                                </Style>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="*">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Interface Name" FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="mes:MesInterfacceInfoModel">
+                                            <TextBlock Text="{Binding InterfaceName}"
+                                                       Foreground="{DynamicResource TextPrimaryBrush}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="*">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Server" FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="mes:MesInterfacceInfoModel">
+                                            <ComboBox BorderThickness="0"
+                                                      Background="{DynamicResource ContentBackgroundBrush}"
+                                                      Foreground="{DynamicResource TextPrimaryBrush}"
+                                                      ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.BaseIndexs}"
+                                                      SelectedValue="{Binding BserUrlIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="2*">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Route URL" FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="mes:MesInterfacceInfoModel">
+                                            <TextBox Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     BorderThickness="0" Background="Transparent"
+                                                     Foreground="{DynamicResource TextPrimaryBrush}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="60">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="mes:MesInterfacceInfoModel">
+                                            <Button Width="46" Height="24" Padding="0"
+                                                    HorizontalAlignment="Center"
+                                                    Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.MesInterfaceTestCommand}"
+                                                    CommandParameter="{Binding}"
+                                                    Background="{DynamicResource PrimaryBrush}"
+                                                    Foreground="{DynamicResource TextOnPrimaryBrush}"
+                                                    BorderThickness="0" Cursor="Hand"
+                                                    hc:BorderElement.CornerRadius="4">
+                                                <TextBlock Text="Test" FontSize="12" />
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- ===== Vertical Splitter ===== -->
+            <GridSplitter Grid.Column="1" Width="4"
+                          HorizontalAlignment="Stretch"
+                          Background="{DynamicResource BorderBrush}"
+                          ResizeDirection="Columns" />
+
+            <!-- ===== Right: Test Panel ===== -->
+            <Border Grid.Column="2"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="8"
+                    Padding="20" Margin="10,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Test Interface"
+                               FontSize="18" FontWeight="Bold"
+                               Foreground="{DynamicResource TextPrimaryBrush}" />
+
+                    <hc:TextBox Grid.Row="1" Height="30" VerticalAlignment="Bottom"
+                                hc:TitleElement.Title="MES Interface" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.TitleWidth="80"
+                                IsReadOnly="True" BorderThickness="0,0,0,1"
+                                Text="{Binding TestInterfaceName}" />
+                    <hc:TextBox Grid.Row="2" Height="30" VerticalAlignment="Bottom"
+                                hc:TitleElement.Title="UrlOrTopic" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.TitleWidth="80"
+                                IsReadOnly="True" BorderThickness="0,0,0,1"
+                                Text="{Binding TestUrl}" />
+
+                    <Grid Grid.Row="3" Margin="0,8,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <hc:TextBox Grid.Column="0" Height="30" VerticalAlignment="Center"
+                                    hc:TitleElement.Title="Test user" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.TitleWidth="80"
+                                    Text="{Binding TestUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="8,0,0,0">
+                            <Button Height="30" Padding="12,0" Margin="0,0,6,0"
+                                    Command="{Binding FormatJsonCommand}"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    Foreground="{DynamicResource TextPrimaryBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Cursor="Hand"
+                                    hc:BorderElement.CornerRadius="4">
+                                <TextBlock Text="Format" FontSize="12" />
+                            </Button>
+                            <Button Height="30" Padding="14,0"
+                                    Command="{Binding SendMesRequestCommand}"
+                                    Background="{DynamicResource PrimaryBrush}"
+                                    Foreground="{DynamicResource TextOnPrimaryBrush}"
+                                    BorderThickness="0" Cursor="Hand" hc:BorderElement.CornerRadius="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Send" Margin="0,0,6,0" />
+                                    <TextBlock Text="Send" FontSize="13" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <hc:TextBox Grid.Row="4" Grid.ColumnSpan="3" Margin="0,12,0,0" Padding="10"
+                                VerticalContentAlignment="Top"
+                                hc:TitleElement.Title="Request (JSON):" hc:TitleElement.TitlePlacement="Top"
+                                AcceptsReturn="True" TextWrapping="Wrap"
+                                Text="{Binding SendTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Foreground="{DynamicResource TextPrimaryBrush}"
+                                Background="{DynamicResource ContentBackgroundBrush}" />
+                    <hc:TextBox Grid.Row="5" Grid.ColumnSpan="3" Margin="0,12,0,0" Padding="10"
+                                VerticalContentAlignment="Top"
+                                hc:TitleElement.Title="Response:" hc:TitleElement.TitlePlacement="Top"
+                                AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"
+                                Text="{Binding ReceiveTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Foreground="{DynamicResource TextPrimaryBrush}"
+                                Background="{DynamicResource ContentBackgroundBrush}" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

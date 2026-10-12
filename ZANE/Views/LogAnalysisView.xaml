@@ -1,0 +1,212 @@
+<UserControl x:Class="ZANE.Views.LogAnalysisView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ZANE.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:LogAnalysisViewModel}"
+             Background="{DynamicResource ContentBackgroundBrush}">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 标题 -->
+        <TextBlock Grid.Row="0" Text="📋 日志分析"
+                   FontSize="28" FontWeight="Bold"
+                   Foreground="{DynamicResource TextPrimaryBrush}"
+                   Margin="0,0,0,20" />
+
+        <!-- 工具栏 -->
+        <Border Grid.Row="1"
+                Background="{DynamicResource ContentBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="6"
+                Padding="12,8" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🔍" VerticalAlignment="Center"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           Margin="0,0,8,0" FontSize="16" />
+                <TextBox Text="{Binding FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200" Height="30"
+                         Background="{DynamicResource InputBackgroundBrush}"
+                         Foreground="{DynamicResource TextPrimaryBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"
+                         BorderThickness="1" Padding="6,0"
+                         VerticalContentAlignment="Center" />
+
+                <Button Command="{Binding SearchLogsCommand}"
+                        Background="{DynamicResource PrimaryBrush}"
+                        Foreground="{DynamicResource TextOnPrimaryBrush}"
+                        BorderThickness="0" Padding="12,4" Cursor="Hand"
+                        Margin="8,0,0,0" Height="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="搜索" />
+                    </StackPanel>
+                </Button>
+
+                <Separator Width="1" Height="24"
+                           Background="{DynamicResource BorderBrush}"
+                           Margin="12,0" />
+
+                <Button Command="{Binding OpenLogFileCommand}"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource TextPrimaryBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" Padding="10,4" Cursor="Hand"
+                        Height="30" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📂" Margin="0,0,6,0" />
+                        <TextBlock Text="打开日志" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding OpenLogDirectoryCommand}"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource TextPrimaryBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" Padding="10,4" Cursor="Hand"
+                        Height="30" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📁" Margin="0,0,6,0" />
+                        <TextBlock Text="打开位置" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding LoadLogsCommand}"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource TextPrimaryBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" Padding="10,4" Cursor="Hand"
+                        Height="30" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📥" Margin="0,0,6,0" />
+                        <TextBlock Text="加载文件" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding ClearLogsCommand}"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource TextPrimaryBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1" Padding="10,4" Cursor="Hand"
+                        Height="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🗑️" Margin="0,0,6,0" />
+                        <TextBlock Text="清空" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- 日志列表 -->
+        <Border Grid.Row="2"
+                Background="{DynamicResource ContentBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="6">
+            <ListView ItemsSource="{Binding FilteredLogs}"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.Resources>
+                    <!-- 日志条目样式：行高亮色 -->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                        <Setter Property="Padding" Value="4,4" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <!-- 图标列（填充方块） -->
+                        <GridViewColumn Width="34">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid Width="24" Height="24" HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" Margin="0,2,0,0">
+                                        <!-- 错误 → 红底白 ✕ -->
+                                        <Border Width="24" Height="24" CornerRadius="4"
+                                                Background="#E74C3C"
+                                                Visibility="{Binding ErrVisibility}">
+                                            <TextBlock Text="✕" FontSize="13" FontWeight="Bold"
+                                                       Foreground="White" HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
+                                        </Border>
+                                        <!-- 警告 → 橙底白 ⚠ -->
+                                        <Border Width="24" Height="24" CornerRadius="4"
+                                                Background="#F39C12"
+                                                Visibility="{Binding WarningVisibility}">
+                                            <TextBlock Text="⚠" FontSize="13" FontWeight="Bold"
+                                                       Foreground="White" HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
+                                        </Border>
+                                        <!-- 成功 → 绿底白 ✓ -->
+                                        <Border Width="24" Height="24" CornerRadius="4"
+                                                Background="{DynamicResource SuccessBrush}"
+                                                Visibility="{Binding SuccessVisibility}">
+                                            <TextBlock Text="✓" FontSize="13" FontWeight="Bold"
+                                                       Foreground="White" HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
+                                        </Border>
+                                        <!-- 信息 → 灰底白 ℹ -->
+                                        <Border Width="24" Height="24" CornerRadius="4"
+                                                Background="#95A5A6"
+                                                Visibility="{Binding MessageVisibility}">
+                                            <TextBlock Text="ℹ" FontSize="13" FontWeight="Bold"
+                                                       Foreground="White" HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- 时间列 -->
+                        <GridViewColumn Width="130"
+                                        DisplayMemberBinding="{Binding Time}"
+                                        Header="时间">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="Padding" Value="4,2" />
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+
+                        <!-- 信息列 -->
+                        <GridViewColumn Header="信息" Width="1200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Message}"
+                                               TextWrapping="Wrap"
+                                               MinHeight="20"
+                                               FontSize="13"
+                                               Foreground="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Foreground}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="Padding" Value="4,2" />
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+    </Grid>
+</UserControl>

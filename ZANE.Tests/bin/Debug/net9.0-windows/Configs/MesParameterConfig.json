@@ -1,0 +1,91 @@
+{
+  "MesInterfaceInfo": {
+    "BaseAddress": "http://20.239.138.231",
+    "BaseAddress2": "",
+    "LocalMesIP": "",
+    "Timeout": 5000,
+    "MesParameterItems": [
+      {
+        "InterfaceName": "登陆",
+        "BserUrlIndex": 1,
+        "Url": "/api/login"
+      },
+      {
+        "InterfaceName": "原材料上料",
+        "BserUrlIndex": 1,
+        "Url": "/api/material/load"
+      },
+      {
+        "InterfaceName": "原材料卸料",
+        "BserUrlIndex": 1,
+        "Url": "/api/material/unload"
+      },
+      {
+        "InterfaceName": "产品进站检查",
+        "BserUrlIndex": 1,
+        "Url": "/api/product/checkin"
+      },
+      {
+        "InterfaceName": "产品过站检查",
+        "BserUrlIndex": 1,
+        "Url": "/api/product/checkout"
+      },
+      {
+        "InterfaceName": "设备防错点检",
+        "BserUrlIndex": 1,
+        "Url": "/api/device/check"
+      },
+      {
+        "InterfaceName": "跨工序参数获取",
+        "BserUrlIndex": 1,
+        "Url": "/api/process/param"
+      },
+      {
+        "InterfaceName": "人员权限校验",
+        "BserUrlIndex": 1,
+        "Url": "/api/user/auth"
+      },
+      {
+        "InterfaceName": "IPQC首巡检",
+        "BserUrlIndex": 1,
+        "Url": "/api/ipqc/check"
+      },
+      {
+        "InterfaceName": "生产参数下发",
+        "BserUrlIndex": 1,
+        "Url": "/api/production/param"
+      },
+      {
+        "InterfaceName": "获取注液补偿值",
+        "BserUrlIndex": 1,
+        "Url": "/api/injection/compensation"
+      },
+      {
+        "InterfaceName": "刷卡",
+        "BserUrlIndex": 1,
+        "Url": "/api/card/swipe"
+      },
+      {
+        "InterfaceName": "报警数据上传",
+        "BserUrlIndex": 1,
+        "Url": "/api/alarm/upload"
+      },
+      {
+        "InterfaceName": "设备状态上传",
+        "BserUrlIndex": 1,
+        "Url": "/api/device/status"
+      },
+      {
+        "InterfaceName": "能源数据上传",
+        "BserUrlIndex": 1,
+        "Url": "/api/energy/upload"
+      }
+    ]
+  },
+  "MqttServiceInfo": {
+    "BrokerAddress": "10.0.0.2",
+    "Port": 1883,
+    "Topic": "/aiipc/MES",
+    "Interval": 10000
+  }
+}

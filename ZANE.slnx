@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ZANE/ZANE.csproj" />
+  <Project Path="ZANE.Tests/ZANE.Tests.csproj" />
+</Solution>

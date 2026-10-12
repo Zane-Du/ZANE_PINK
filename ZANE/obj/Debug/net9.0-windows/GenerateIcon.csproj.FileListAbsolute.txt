@@ -1,0 +1,4 @@
+C:\Users\34163\Desktop\ZANE\ZANE\obj\Debug\net9.0-windows\GenerateIcon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\34163\Desktop\ZANE\ZANE\obj\Debug\net9.0-windows\GenerateIcon.AssemblyInfoInputs.cache
+C:\Users\34163\Desktop\ZANE\ZANE\obj\Debug\net9.0-windows\GenerateIcon.AssemblyInfo.cs
+C:\Users\34163\Desktop\ZANE\ZANE\obj\Debug\net9.0-windows\GenerateIcon.csproj.CoreCompileInputs.cache

@@ -1,0 +1,491 @@
+{
+  "Roles": [
+    {
+      "Level": 18446744073709551615,
+      "Name": "管理员"
+    },
+    {
+      "Level": 2,
+      "Name": "工艺"
+    },
+    {
+      "Level": 4,
+      "Name": "设备"
+    },
+    {
+      "Level": 8,
+      "Name": "生产"
+    }
+  ],
+  "PermissionItems": [
+    {
+      "PropertyName": "SpotCode1",
+      "DisplayName": "点检电芯1",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCode2",
+      "DisplayName": "点检电芯2",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCode3",
+      "DisplayName": "点检电芯3",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCode4",
+      "DisplayName": "点检电芯4",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "BatteryBarcodeValidationRule",
+      "DisplayName": "电芯条码验证规则",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "PrintAllSql",
+      "DisplayName": "日志打印所有SQL",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ProductionType",
+      "DisplayName": "生产类型",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "TrayBarcodeValidationRule",
+      "DisplayName": "托盘条码验证规则",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "MESStatus",
+      "DisplayName": "MES状态",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SqlOutTime",
+      "DisplayName": "SQL超时打印(秒)",
+      "Category": "Advanced",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "LineName",
+      "DisplayName": "产线编号",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "WorkShop",
+      "DisplayName": "车间",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ElectrolyteLotCode",
+      "DisplayName": "电解液批次",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ProcessOperationName",
+      "DisplayName": "工序编号",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "WorkOrderNo",
+      "DisplayName": "工作令",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "GlueNailCode",
+      "DisplayName": "胶钉批次",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "Title",
+      "DisplayName": "软件标题",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "DeviceCode",
+      "DisplayName": "设备编码",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SiteCode",
+      "DisplayName": "站点编码",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SessionId",
+      "DisplayName": "MES登录Id",
+      "Category": "Device",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableReuseOldData",
+      "DisplayName": "复用旧数据",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEmptyLoadMode",
+      "DisplayName": "空载模式",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableCellBarcodeVerification",
+      "DisplayName": "启用电芯条码校验",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableAfterWeightCheck",
+      "DisplayName": "启用后称重检测",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableBeforeWeightCheck",
+      "DisplayName": "启用前称重检测",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "EnableCardLoginMode",
+      "DisplayName": "启用刷卡模式",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableTemperatureCheck",
+      "DisplayName": "启用温度检测",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnablePseudoCode",
+      "DisplayName": "启用虚拟码",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsEnableInjectionCheck",
+      "DisplayName": "启用注液量检测",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "IsForceOK",
+      "DisplayName": "强制结果合格",
+      "Category": "Function",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ParameterConfig",
+      "DisplayName": "参数配置",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "UserManagement",
+      "DisplayName": "角色管理",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ControlPanel",
+      "DisplayName": "控制面板",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "LogAnalysis",
+      "DisplayName": "日志分析",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "DeviceConfig",
+      "DisplayName": "设备配置",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ProductionHistory",
+      "DisplayName": "生产历史",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ChartDisplay",
+      "DisplayName": "图表显示",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "ImageDisplay",
+      "DisplayName": "图像显示",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "CameraCalib",
+      "DisplayName": "相机标定",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SignalConfig",
+      "DisplayName": "信号配置",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "TestPage1",
+      "DisplayName": "用户管理",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "MotionControl",
+      "DisplayName": "运动控制",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "MainPage",
+      "DisplayName": "主页面",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "AspNet",
+      "DisplayName": "ASP.NET",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "MESTest",
+      "DisplayName": "MES测试",
+      "Category": "Menu",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "WeighingTimeout",
+      "DisplayName": "称重超时(ms)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "VoltageUpper",
+      "DisplayName": "电压上限(V)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "VoltageLower",
+      "DisplayName": "电压下限(V)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceUpper1",
+      "DisplayName": "短路测试上限1(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceUpper2",
+      "DisplayName": "短路测试上限2(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceUpper5",
+      "DisplayName": "短路测试上限5(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceLower1",
+      "DisplayName": "短路测试下限1(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceLower3",
+      "DisplayName": "短路测试下限3(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceLower4",
+      "DisplayName": "短路测试下限4(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "SpotCheckResistanceLower6",
+      "DisplayName": "短路测试下限6(MΩ)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "AfterWeightUpper",
+      "DisplayName": "后称重上限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "AfterWeightLower",
+      "DisplayName": "后称重下限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "BeforeWeightUpper",
+      "DisplayName": "前称重上限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "BeforeWeightLower",
+      "DisplayName": "前称重下限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "RetryCountScanCode",
+      "DisplayName": "扫码重试次数",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "TemperatureUpper",
+      "DisplayName": "温度上限(℃)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "TemperatureLower",
+      "DisplayName": "温度下限(℃)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "InjectionStandard",
+      "DisplayName": "注液标准(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "InjectionUpper",
+      "DisplayName": "注液上限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "InjectionLower",
+      "DisplayName": "注液下限(g)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "MesHeartbeatInterval",
+      "DisplayName": "MES心跳间隔(ms)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    },
+    {
+      "PropertyName": "PLCHeartbeatInterval",
+      "DisplayName": "PLC心跳间隔(ms)",
+      "Category": "Run",
+      "EditLevel": 4611686018427387904,
+      "IsSelecked": false
+    }
+  ]
+}

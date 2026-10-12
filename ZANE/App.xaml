@@ -1,0 +1,30 @@
+<Application x:Class="ZANE.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ZANE"
+             xmlns:converters="clr-namespace:ZANE.Converters"
+             xmlns:vm="clr-namespace:ZANE.ViewModels"
+             xmlns:views="clr-namespace:ZANE.Views"
+             xmlns:models="clr-namespace:ZANE.Models"
+             Startup="App_OnStartup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- HandyControl 内置主题（需在自定义主题之前） -->
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+
+                <!-- 默认加载浅色主题 -->
+                <ResourceDictionary Source="Themes/LightTheme.xaml" />
+                <!-- 全局样式 -->
+                <ResourceDictionary Source="Styles/GlobalStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- 全局转换器 -->
+            <converters:ThemeToBoolConverter x:Key="ThemeToBoolConverter" />
+            <converters:ThemeToggleIconConverter x:Key="ThemeToggleIconConverter" />
+            <converters:ThemeToggleTextConverter x:Key="ThemeToggleTextConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

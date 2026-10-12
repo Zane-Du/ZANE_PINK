@@ -1,0 +1,63 @@
+{
+  "RecipeName": "_test_del_",
+  "DeviceParameter": {
+    "Title": "ZANE 控制系统",
+    "DeviceCode": "",
+    "SiteCode": "",
+    "WorkShop": "",
+    "LineName": "",
+    "ProcessOperationName": "",
+    "WorkOrderNo": "",
+    "ElectrolyteLotCode": "",
+    "GlueNailCode": "",
+    "SessionId": ""
+  },
+  "RunParameter": {
+    "RetryCountScanCode": 2,
+    "InjectionStandard": 0.0,
+    "InjectionUpper": 0.0,
+    "InjectionLower": 0.0,
+    "BeforeWeightUpper": 0.0,
+    "BeforeWeightLower": 0.0,
+    "AfterWeightUpper": 0.0,
+    "AfterWeightLower": 0.0,
+    "VoltageUpper": 6.0,
+    "VoltageLower": 2.0,
+    "TemperatureUpper": 100.0,
+    "TemperatureLower": 0.0,
+    "WeighingTimeout": 1000,
+    "MesHeartbeatInterval": 3000,
+    "PLCHeartbeatInterval": 1000,
+    "SpotCheckResistanceUpper1": 0.0,
+    "SpotCheckResistanceLower1": 0.0,
+    "SpotCheckResistanceUpper2": 0.0,
+    "SpotCheckResistanceLower3": 0.0,
+    "SpotCheckResistanceLower4": 0.0,
+    "SpotCheckResistanceUpper5": 0.0,
+    "SpotCheckResistanceLower6": 0.0
+  },
+  "FunctionEnable": {
+    "IsEnableBeforeWeightCheck": false,
+    "IsEnableAfterWeightCheck": false,
+    "IsEnableInjectionCheck": false,
+    "IsEnableTemperatureCheck": false,
+    "IsEnablePseudoCode": false,
+    "IsEmptyLoadMode": false,
+    "IsForceOK": false,
+    "IsEnableCellBarcodeVerification": false,
+    "EnableCardLoginMode": false,
+    "IsEnableReuseOldData": false
+  },
+  "AdvancedConfig": {
+    "MESStatus": 0,
+    "ProductionType": 0,
+    "BatteryBarcodeValidationRule": "^[a-zA-Z0-9]{10,24}$",
+    "TrayBarcodeValidationRule": "^[a-zA-Z0-9]{10,24}$",
+    "SqlOutTime": 0.6,
+    "PrintAllSql": false,
+    "SpotCode1": "",
+    "SpotCode2": "",
+    "SpotCode3": "",
+    "SpotCode4": ""
+  }
+}

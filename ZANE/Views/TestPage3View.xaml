@@ -1,0 +1,81 @@
+<UserControl x:Class="ZANE.Views.TestPage3View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ZANE.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:TestPage3ViewModel}"
+             Background="{DynamicResource ContentBackgroundBrush}">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="🧪  测试页面3"
+                   FontSize="28" FontWeight="Bold"
+                   Foreground="{DynamicResource TextPrimaryBrush}"
+                   Margin="0,0,0,20" />
+
+        <Border Grid.Row="1"
+                Background="{DynamicResource ButtonBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="8"
+                Padding="16,12" Margin="0,0,0,20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="状态: " FontSize="14"
+                           Foreground="{DynamicResource TextSecondaryBrush}" />
+                <TextBlock Text="{Binding StatusText}" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryBrush}" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2"
+                Background="{DynamicResource ButtonBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1" CornerRadius="8"
+                Padding="24">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🧪" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,20" />
+                <TextBlock Text="测试页面3" FontSize="20" FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimaryBrush}"
+                           HorizontalAlignment="Center" Margin="0,0,0,8" />
+                <TextBlock Text="页面功能开发中，后续将实现完整功能"
+                           FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" Margin="0,0,0,20" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Command="{Binding TestButtonCommand}"
+                            Background="{DynamicResource PrimaryBrush}"
+                            Foreground="{DynamicResource TextOnPrimaryBrush}"
+                            BorderThickness="0" Padding="20,10" Cursor="Hand" Margin="0,0,12,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🧪" Margin="0,0,8,0" />
+                            <TextBlock Text="功能测试" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding ResetStatusCommand}"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource TextPrimaryBrush}"
+                            BorderBrush="{DynamicResource BorderBrush}"
+                            BorderThickness="1" Padding="16,10" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🔄" Margin="0,0,8,0" />
+                            <TextBlock Text="重置" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <TextBlock FontSize="13"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" Margin="0,16,0,0">
+                    <Run Text="点击次数: " />
+                    <Run Text="{Binding ClickCount}" />
+                </TextBlock>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
